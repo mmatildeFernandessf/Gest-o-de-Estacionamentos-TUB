@@ -1,0 +1,248 @@
+<!--<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="viewport" content="width=device-width", initial-scale="1.0">
+    <title>TUB</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, Helvetica, sans-serif}
+        .myLink {display: none}
+    </style>
+</head>
+<body>
+
+    <header class="header">
+    <a href="#" class="logo">TUB</a>
+
+    <nav class="navbar">
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Gallery</a>
+        <a href="#">Services</a>
+        <a href="#">Contact</a>
+    </nav>
+
+
+    </nav>
+</header>
+
+
+
+
+
+
+</body>
+</html>-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TUB</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+<header class="header">
+    <a href="#" class="logo">
+        <img src="images/TUB2.png" alt="Logo TUB" style="width: 105px; height: 55px; margin-right: 10px;">
+    </a>
+
+    <nav class="navbar">
+        <a href="#">Olá, Matilde!</a>
+    </nav>
+</header>
+
+
+<div class="w3-light-grey">
+    <div class="w3-display-container w3-content w3-hide-small content-container">
+        <div class="w3-display-middle" style="width:100%">
+            <div class="w3-bar">
+                <button class="w3-bar-item w3-button tablink" onclick="openLink(event, 'Estacionamento');"><i
+                        class="fa fa-car w3-margin-right"></i>Estacionamento
+                </button>
+                <button class="w3-bar-item w3-button tablink" onclick="openLink(event, 'Pagamentos');"><i
+                        class="fa fa-money w3-margin-right"></i>Pagamentos
+                </button>
+                <button class="w3-bar-item w3-button tablink" onclick="openLink(event, 'Tempo');"><i
+                        class="fa fa-hourglass-1 w3-margin-right"></i>Tempo
+                </button>
+            </div>
+
+            <!-- Tabs -->
+            <div id="Estacionamento" class="w3-container w3-white w3-padding-16 myLink" style="text-align: center;">
+                <h3>Descubra onde estacionar</h3>
+                <div style="display: inline-block; text-align: left;">
+                    <table class="w3-table w3-striped" style="width: 500px;"> <!-- Adjust the width as needed -->
+                        <thead>
+                        <tr>
+                            <th>Localização</th>
+                            <th>Número de Lugares</th>
+                        </tr>
+                        </thead>
+                        <tbody id="estacionamentoBody">
+                        <!-- Data will be dynamically populated here -->
+                        </tbody>
+                    </table>
+                </div>
+                <!-- Texto e caixa de seleção -->
+                <div style="margin-top: 20px;">
+                    <h5></h5>
+                    <p>Não sabe o caminho?</p>
+                    <h3></h3>
+                    <label for="localizacao"></label>
+                    <select id="localizacao">
+                        <option value="avenidaCentral">Avenida Central</option>
+                        <option value="pracaComercio">Praça do Comércio</option>
+                    </select>
+                    <button onclick="irParaGoogleMaps()" style="border: 1px solid cornflowerblue; padding: 0px 20px;">Ir</button>
+                </div>
+
+                <script>
+                    function irParaGoogleMaps() {
+                        // Obtenha o valor selecionado da caixa de seleção
+                        var localizacao = document.getElementById("localizacao").value;
+
+                        // Mapeie a localização selecionada para as coordenadas do Google Maps
+                        var coordenadas;
+                        switch (localizacao) {
+                            case "avenidaCentral":
+                                coordenadas = "Avenida Central, Braga";
+                                break;
+                            case "pracaComercio":
+                                coordenadas = "Praça do Comércio, Braga";
+                                break;
+                            // Adicione mais casos conforme necessário
+                            default:
+                                coordenadas = "Avenida Central, Braga"; // Valor padrão
+                        }
+
+                        // Abra o Google Maps com as coordenadas
+                        window.open("https://www.google.com/maps?q=" + encodeURIComponent(coordenadas), "_blank");
+                    }
+                </script>
+
+            </div>
+
+            <div id="Pagamentos" class="w3-container w3-white w3-padding-16 myLink">
+                <h3>Pague o seu estacionamento</h3>
+
+                <table class="w3-table w3-striped" style="width: 500px;">
+                    <thead>
+                    <tr>
+                        <th>Matricula</th>
+                        <th>Data</th>
+                        <th>Valor</th>
+                        <th>Estado do Pagamento</th> <!-- Fixed typo here -->
+                    </tr>
+                    </thead>
+                    <tbody id="pagamentosBody">
+                    <tr>
+                        <td>12-AA-13</td>
+                        <td>09/12/2023</td>
+                        <td>3,5€</td>
+                        <td>Pago</td>
+                    </tr>
+                    <tr>
+                        <td>12-AA-13</td>
+                        <td>20/12/2023</td>
+                        <td>3€</td>
+                        <td>Por Pagar ...</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="Tempo" class="w3-container w3-white w3-padding-16 myLink">
+                <h3>Veja o tempo restante</h3>
+
+                <table class="w3-table w3-striped" style="width: 500px;">
+                    <thead>
+                    <tr>
+                        <th>Matricula</th>
+                        <th>Data</th>
+                        <th>Tempo Restante</th>
+                    </tr>
+                    </thead>
+                    <tbody id="tempoBody">
+                    <tr>
+                        <td>12-AA-13</td>
+                        <td>09/12/2023</td>
+                        <td>Tempo Expirado</td>
+                    </tr>
+                    <tr>
+                        <td>12-AA-13</td>
+                        <td>20/12/2023</td>
+                        <td>26 minutos</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        obterListaEstacionamentos();
+    });
+
+    function obterListaEstacionamentos() {
+        fetch('http://localhost:8080/api/v1/kafka/getEstacionamento')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Erro na requisição: ' + response.statusText);
+                }
+                return response.json();
+            })
+            .then(data => {
+                const estacionamentoBody = document.getElementById('estacionamentoBody');
+
+                // Clear previous data
+                estacionamentoBody.innerHTML = '';
+
+                if (data && data.length > 0) {
+                    data.forEach(estacionamento => {
+                        // Create a table row for each estacionamento
+                        const row = document.createElement('tr');
+                        row.innerHTML = `<td>${estacionamento.localizacao}</td><td>${estacionamento.numLugares}</td>`;
+                        estacionamentoBody.appendChild(row);
+                    });
+                } else {
+                    console.error('Erro: Dados da API estão indefinidos ou vazios.');
+                    estacionamentoBody.innerHTML = '<tr><td colspan="2">Erro ao obter dados do estacionamento.</td></tr>';
+                }
+            })
+            .catch(error => {
+                console.error('Erro na requisição:', error);
+                const estacionamentoBody = document.getElementById('estacionamentoBody');
+                estacionamentoBody.innerHTML = '<tr><td colspan="2">Erro na requisição. Verifique o console para mais detalhes.</td></tr>';
+            });
+    }
+
+    function openLink(evt, linkName) {
+        var i, x, tablinks;
+        x = document.getElementsByClassName("myLink");
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablink");
+        for (i = 0; i < x.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
+        }
+        document.getElementById(linkName).style.display = "block";
+        evt.currentTarget.className += " w3-red";
+    }
+
+    document.getElementsByClassName("tablink")[0].click();
+</script>
+
+</body>
+</html>
+
